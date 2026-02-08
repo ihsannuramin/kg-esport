@@ -1,0 +1,17 @@
+<section id="sponsor" class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-gray-300 tracking-widest mb-12 font-bold text-xl">DIDUKUNG OLEH</h2>
+        <div class="flex items-center justify-center flex-wrap gap-12 md:gap-16">
+            @foreach($sponsors as $sponsor)
+            <div class="w-40 h-28 flex items-center justify-center bg-white/5 rounded-lg p-4 hover:bg-white/10 transition">
+                @if($sponsor->logo)
+                    <!-- <img src="{{ Storage::url($sponsor->logo) }}" alt="{{ $sponsor->name }}" class="max-w-full max-h-full"> -->
+                    <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}" class="max-w-full max-h-full">
+                @else
+                    <span class="text-xl font-bold {{ $sponsor->color_class ?? 'text-gray-400' }}">{{ $sponsor->name }}</span>
+                @endif
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>

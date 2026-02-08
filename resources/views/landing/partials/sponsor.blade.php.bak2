@@ -1,0 +1,94 @@
+<section id="sponsor" class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-gray-300 tracking-widest mb-12 font-bold text-xl">DIDUKUNG OLEH</h2>
+
+        {{-- Kontainer Utama (Relative) --}}
+        <div class="relative flex items-center justify-center max-w-6xl mx-auto">
+            
+            {{-- Kontainer Utama Kubus (Scene) --}}
+            <div id="cubeScene" class="w-full h-52 md:h-64" style="perspective: 1000px;">
+                
+                {{-- Kubus yang berputar --}}
+                <div id="sponsorCube" class="relative w-full h-full duration-700 ease-in-out" style="transform-style: preserve-3d; transform: rotateY(0deg);">
+                    
+                    {{-- Face 1 (Sisi Depan) --}}
+                    {{-- translateZ disesuaikan menjadi 576px --}}
+                    <div class="cube-face" style="transform: rotateY(0deg) translateZ(576px);">
+                        <div class="flex items-center justify-center gap-12 md:gap-16 h-full">
+                            {{-- Sponsor 1-3 (W-32 H-24) --}}
+                            <div class="flex-shrink-0"><div class="w-32 h-24 flex items-center justify-center"><img src="http://localhost/ARN/LandingPage/Template/kagendraV2/assets/images/sponsors/02. Sponsor/Color Logo/By.U Logo/By.U Logo.png" alt="By.u" class="max-w-full max-h-full object-contain"></div></div>
+                            <div class="flex-shrink-0"><div class="w-32 h-24 flex items-center justify-center"><img src="http://localhost/ARN/LandingPage/Template/kagendraV2/assets/images/sponsors/02. Sponsor/Color Logo/Dunia Games Logo/Dunia Games Red Logo.png" alt="Dunia Games" class="max-w-full max-h-full object-contain"></div></div>
+                            <div class="flex-shrink-0"><div class="w-32 h-24 flex items-center justify-center"><img src="http://localhost/ARN/LandingPage/Template/kagendraV2/assets/images/sponsors/02. Sponsor/White Logo/GamesMAX Logo/GamesMAX Logo.png" alt="GamesMax" class="max-w-full max-h-full object-contain"></div></div>
+                        </div>
+                    </div>
+
+                    {{-- Face 2 (Sisi Kanan) --}}
+                    {{-- translateZ disesuaikan menjadi 576px --}}
+                    <div class="cube-face" style="transform: rotateY(90deg) translateZ(576px);">
+                        <div class="flex items-center justify-center gap-12 md:gap-16 h-full">
+                            {{-- Sponsor 4-6 (W-32 H-24) --}}
+                            <div class="flex-shrink-0"><div class="w-32 h-24 flex items-center justify-center"><img src="http://localhost/ARN/LandingPage/Template/kagendraV2/assets/images/sponsors/02. Sponsor/White Logo/MAXStream Studios Logo/New MAXStream Studios White Logo.png" alt="MaxStream" class="max-w-full max-h-full object-contain"></div></div>
+                            <div class="flex-shrink-0"><div class="w-32 h-24 flex items-center justify-center"><img src="http://localhost/ARN/LandingPage/Template/kagendraV2/assets/images/sponsors/02. Sponsor/Color Logo/Telkomsel Logo/Telkomsel Red Logo.png" alt="Telkomsel" class="max-w-full max-h-full object-contain"></div></div>
+                            <div class="flex-shrink-0"><div class="w-32 h-24 flex items-center justify-center"><img src="http://localhost/ARN/LandingPage/Template/kagendraV2/assets/images/sponsors/02. Sponsor/Color Logo/FanMate/FanMate logo_Treatment_FINAL-10.png" alt="FanMate" class="max-w-full max-h-full object-contain"></div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        
+        {{-- Indikator dan Navigasi Mobile (Dihapus karena tombol navigasi dihilangkan) --}}
+
+    </div>
+</section>
+
+{{-- Custom CSS untuk 3D (Wajib) --}}
+<style>
+    /* Menyembunyikan sisi belakang elemen saat rotasi 3D */
+    .cube-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cube = document.getElementById('sponsorCube');
+    
+    let currentFace = 0;
+    const totalFaces = 2; 
+    const autoplayDelay = 5000; // 5 detik
+
+    let autoplayTimer; 
+
+    // Fungsi untuk memperbarui rotasi kubus
+    const updateCube = () => {
+        const rotationAngle = currentFace * -90; 
+        cube.style.transform = `rotateY(${rotationAngle}deg)`;
+    };
+
+    // Fungsi untuk maju ke slide berikutnya (hanya dipanggil oleh timer)
+    const nextFace = () => {
+        currentFace = (currentFace + 1) % totalFaces;
+        updateCube();
+    };
+
+    // Fungsi untuk memulai Autoplay
+    const startAutoplay = () => {
+        autoplayTimer = setInterval(() => {
+            nextFace(); 
+        }, autoplayDelay);
+    };
+
+    // --- Inisialisasi ---
+    
+    // Inisialisasi tampilan awal
+    updateCube(); 
+    
+    // Mulai Autoplay
+    startAutoplay(); 
+});
+</script>
